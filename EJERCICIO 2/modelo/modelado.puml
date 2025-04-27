@@ -1,0 +1,37 @@
+@startuml
+
+class Persona {
+    - id : int
+    - nombres : str
+    - genero : str
+    - direccion : str
+}
+
+class Cliente {
+}
+
+class Cajero {
+}
+
+class CajaBanco {
+    - cola : list<Cliente>
+    - cajero : Cajero
+
+    + agregar_cliente(cliente: Cliente)
+    + atender_clientes()
+}
+
+class TestCajaBanco {
+    + main()
+}
+
+Persona <|-- Cliente
+Persona <|-- Cajero
+
+CajaBanco --> "0..*" Cliente : contiene
+CajaBanco --> Cajero : tiene
+TestCajaBanco --> CajaBanco : usa
+TestCajaBanco --> Cliente : crea
+TestCajaBanco --> Cajero : crea
+
+@enduml

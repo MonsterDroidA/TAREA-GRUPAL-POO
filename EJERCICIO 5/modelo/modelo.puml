@@ -1,0 +1,44 @@
+@startuml
+' Estilo opcional
+skinparam classAttributeIconSize 0
+
+' ===== CLASE CLIENTE =====
+class Cliente {
+    - nro_cliente: int
+    - nombre: str
+    - monto: float
+}
+
+' ===== CLASE TRABAJADOR =====
+class Trabajador {
+    - nro_trabajador: int
+    - nombre: str
+}
+
+' ===== CLASE CAJA =====
+class Caja {
+    - numero_caja: int
+    - trabajador: Trabajador
+    - recaudacion: float
+    - clientes_atendidos: int
+    - cola_clientes: List<Cliente>
+    + agregar_cliente(cliente: Cliente)
+    + procesar_clientes()
+    + clientes_por_atender(): int
+}
+
+' ===== CLASE SUPERMERCADO =====
+class Supermercado {
+    - cajas: List<Caja>
+    + agregar_caja(numero_caja: int, trabajador: Trabajador)
+    + agregar_cliente_a_caja_mas_libre(cliente: Cliente)
+    + procesar_todas_las_cajas()
+    + mostrar_estado_cajas()
+}
+
+' ===== Relaciones =====
+Supermercado "1" *-- "0..*" Caja
+Caja "1" *-- "0..*" Cliente
+Caja "1" *-- "1" Trabajador
+
+@end

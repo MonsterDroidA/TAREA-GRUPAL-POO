@@ -1,0 +1,27 @@
+@startuml
+
+class Pila {
+    - elementos: list
+    + Pila()
+    + push(elemento: Object)
+    + pop(): Object
+    + isEmpty(): bool
+    + top(): Object
+    + size(): int
+    + reverse(): Pila
+    + pushAll(otraPila: Pila)
+}
+
+class Cola {
+    - elementos: list
+    + Cola()
+    + push(elemento: Object)
+    + pop(): Object
+    + isEmpty(): bool
+    + top(): Object
+    + size(): int
+    + reverse(): Cola
+    + pushAll(otraCola: Cola)
+}
+
+@enduml

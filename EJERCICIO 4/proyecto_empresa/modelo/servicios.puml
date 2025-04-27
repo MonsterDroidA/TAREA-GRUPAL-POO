@@ -1,0 +1,39 @@
+@startuml
+class Tarea {
+    - area: any
+    - descripcion: any
+    + getArea(): any
+    + setArea(area): void
+    + getDescripcion(): any
+    + setDescripcion(descripcion): void
+    + __str__(): str
+}
+
+class Empleado {
+    - codigo: any
+    - nombre: any
+    - tareas: deque
+    + getCodigo(): any
+    + setCodigo(codigo): void
+    + getNombre(): any
+    + setNombre(nombre): void
+    + agregar_tarea(tarea: Tarea): void
+    + procesar_tarea(): void
+    + cantidad_tareas(): int
+}
+
+class Empresa {
+    - empleados: list
+    + getEmpleados(): list
+    + setEmpleados(empleados): void
+    + agregar_empleado(codigo, nombre): void
+    + obtener_empleado_menos_tareas(): Empleado
+    + ingresar_nueva_tarea(area, descripcion): void
+    + procesar_tareas_rango(desde=15, hasta=30): void
+    + mostrar_empleados(): void
+}
+
+Empleado "1" *-- "*" Tarea : contiene >
+Empresa "1" *-- "*" Empleado : gestiona >
+
+@enduml
